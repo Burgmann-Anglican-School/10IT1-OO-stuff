@@ -25,8 +25,9 @@ class Dog:
     def description(self):
         return self.name + " is a " + self.breed+ " that is " + self.colour
     
+    #Dunder string that uses the class' name to output.
     def __str__(self):
-        return f"{self.name} is a {self.breed} that is {self.colour} and they have {self.legs} legs."
+        return f"{self.name} is a {self.__class__.__name__} that is {self.colour} and they have {self.legs} legs."
     
     #This is weird, don't actually do this    
     def __mul__(self, other):
@@ -41,21 +42,18 @@ class GreatDane(Dog):
         self.name = name
         self.colour = colour
         self.legs = legs
-
+    
+    def speak(self):
+        return "GreatDane says what?"
 
 #Instantiation - We are creating an instance of the class as an object
 dog1 = Dog('Clifford', 'Big', 'Red', 3)
 dog2 = Dog('Bob', 'Great Dane', 'Purple', 16)
 dog3 = Dog('Hugo', 'Sausage', '0xFFFFFF', 2)
 
+
 bob = GreatDane('Bob', 'Purple', 16)
-
-print(bob.speak())
-
-#Print the dogs
-print(dog1)
-print(dog2)
-print(dog3)
-
-print(dog1.speak())
-
+bob2 = GreatDane('Gerald', 'Magnificent', 12)
+print(bob)
+print(bob2)
+print(bob * bob2)
